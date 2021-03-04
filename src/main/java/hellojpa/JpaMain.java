@@ -17,26 +17,33 @@ public class JpaMain {
         tx.begin();
         try {
 
-            //비영속
-            Member member1 = new Member(150L, "A");
-            Member member2 = new Member(160L, "B");
+//            //비영속
+//            Member member1 = new Member(150L, "A");
+//            Member member2 = new Member(160L, "B");
+//
+//            //영속
+//            em.persist(member1);
+//            em.persist(member2);
+//
+//            //조회
+//            Member findMember1 = em.find(Member.class, 150L);
+//            Member findMember2 = em.find(Member.class, 150L);
+//
+//            //영속 엔티티의 동일성 비교
+//            System.out.println("result = " + (findMember1 == findMember2));
+//
+//            //수정
+//            findMember1.setName("AAA");
+//
+//            //삭제
+//            em.remove(findMember2);
 
-            //영속
-            em.persist(member1);
-            em.persist(member2);
+            Member member = new Member();
+            member.setId(3L);
+            member.setUsername("C");
+            member.setRoleType(RoleType.GUEST);
 
-            //조회
-            Member findMember1 = em.find(Member.class, 150L);
-            Member findMember2 = em.find(Member.class, 150L);
-
-            //영속 엔티티의 동일성 비교
-            System.out.println("result = " + (findMember1 == findMember2));
-
-            //수정
-            findMember1.setName("AAA");
-
-            //삭제
-            em.remove(findMember2);
+            em.persist(member);
 
             tx.commit();
         } catch (Exception e) {
